@@ -28,6 +28,8 @@ function runGame(gameType) {
         displayAdditionalQuestions(num1, num2)
     } else if (gameType === "multiply") {
         displayMultiplyQuestions(num1, num2)
+    } else if (gameType) {
+        displaySubtractQuestions(num1, num2)
     } else {
         alert(`not known game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -67,6 +69,8 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"];
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     } else {
         alert(`unimplemented operator ${operator}`);
         throw `unimplemented operator ${operator}. Aborting!`
@@ -95,8 +99,11 @@ function displayAdditionalQuestions (operand1, operand2) {
 
 }
 
-function displaySubtractQuestions () {
-
+function displaySubtractQuestions (operand1, operand2) {
+// its kind a like if statement. so it asks if operand1 > operand2, and if so then return operand1, otherwise return operand2
+    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById('operand2').textContent = operand2 < operand1 ? operand2 : operand1;
+    document.getElementById('operator').textContent = "-";
 }
 
 function displayMultiplyQuestions (operand1, operand2) {
