@@ -24,8 +24,10 @@ function runGame(gameType) {
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
 
-    if (gameType === "addition") {
+    if (gameType === "addition" ) {
         displayAdditionalQuestions(num1, num2)
+    } else if (gameType === "multiply") {
+        displayMultiplyQuestions(num1, num2)
     } else {
         alert(`not known game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -63,6 +65,8 @@ function calculateCorrectAnswer() {
 
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
+    } else if (operator === "x") {
+        return [operand1 * operand2, "multiply"];
     } else {
         alert(`unimplemented operator ${operator}`);
         throw `unimplemented operator ${operator}. Aborting!`
@@ -92,9 +96,11 @@ function displayAdditionalQuestions (operand1, operand2) {
 }
 
 function displaySubtractQuestions () {
-    
+
 }
 
-function displayMultiplyQuestions () {
-    
+function displayMultiplyQuestions (operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "x";
 }
